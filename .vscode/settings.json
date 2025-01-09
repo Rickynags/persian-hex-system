@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "*.jinja": "bat",
+        "string": "cpp",
+        "vector": "cpp",
+        "stdexcept": "cpp",
+        "persian_hex.h": "c"
+    }
+}
