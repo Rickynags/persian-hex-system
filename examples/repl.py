@@ -17,7 +17,7 @@ def main():
             result = PersianHex(number).show()
             print(result)
     except ValueError:
-        print("Error: Please enter a valid integer.")
+        print("Error: Please enter a valid integer.", number)
     except ImportError as e:
         print(f"Error importing 'PersianHex'")
 

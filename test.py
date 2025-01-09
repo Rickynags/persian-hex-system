@@ -16,6 +16,7 @@ LANGUAGE_EXTENSIONS = {
     "bash": ".sh",
 }
 
+os.environ["PYTHONIOENCODING"] = "utf-8"
 
 def load_json_data(file_path):
     """Load JSON data from the specified file."""
@@ -66,10 +67,11 @@ def run_language_script(script_path, number, language):
             print(f"Running {language} script: {script_path} with number {number}")
             result = subprocess.run(
                 [language, script_path],
-                input=str(number),
+                input=str(number) + "\n",
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
-                text=True
+                text=True,
+                encoding="utf-8"
             )
             if result.returncode != 0:
                 print(f"Error running {language} script '{script_path}' for number {number}:\n{result.stderr}")
@@ -93,8 +95,8 @@ def test_language(language, script_path, json_data):
         script_output = run_language_script(script_path, number, language)
         if script_output != expected_output:
             print(f"Mismatch for number {number} in {language} script:")
-            print(f"  Expected: {expected_output}")
-            print(f"  Got:      {script_output}")
+            print(f"  Expected: '{expected_output}'")
+            print(f"  Got:      '{script_output}'")
             return False
     print(f"All tests passed for {language}!")
     return True
