@@ -22,12 +22,12 @@ def main():
             return
 
         persian_hex = PersianHex()
-        # persian_hex.set_mode(Digits.ENGLISH)
-        persian_hex.set_mode(Digits.PERSIAN)
+        persian_hex.set_mode(Digits.ENGLISH)
+        # persian_hex.set_mode(Digits.PERSIAN)
         # persian_hex.set_mode(Digits.ARABIC)
 
         result = persian_hex.calculate(number)
-        print(f"Persian Hexadecimal: {result}")
+        print(f"Hexadecimal: {result}")
     except ImportError as e:
         print(f"Error importing 'PersianHex': {e}")
 

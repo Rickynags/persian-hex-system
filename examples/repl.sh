@@ -2,10 +2,15 @@
 
 source ../libs/persian_hex.sh
 
-read -p "شماره وارد کنید: " input
+echo "Enter a non-negative integer: "
+read user_input
 
-if [[ "$input" =~ ^[0-9]+$ ]]; then
-  show_persian_hex "$input"
-else
-  echo "خطا: لطفاً یک عدد صحیح معتبر وارد کنید."
+if ! [[ "$user_input" =~ ^[0-9]+$ ]] || [ "$user_input" -lt 0 ]; then
+    echo "Error: Please enter a valid non-negative integer."
+    exit 1
 fi
+
+set_mode "ENGLISH"
+
+result=$(calculate "$user_input")
+echo "Hexadecimal: $result"

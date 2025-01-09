@@ -1,13 +1,31 @@
 <?php
 require_once __DIR__ . "/../libs/persian_hex.php";
 
-try {
-    echo "شماره وارد کنید: ";
-    $input = trim(fgets(STDIN));
-    $number = (int)$input;
+function main() {
+    try {
+        echo "Enter a non-negative integer: ";
+        $user_input = trim(fgets(STDIN));
 
-    $persianHex = new PersianHex($number);
-    echo $persianHex->show() . PHP_EOL;
-} catch (Exception $e) {
-    echo "خطا: لطفاً یک عدد صحیح معتبر وارد کنید. " . $e->getMessage() . PHP_EOL;
+        if (!is_numeric($user_input)) {
+            echo "Error: Please enter a valid integer.\n";
+            return;
+        }
+
+        $number = (int)$user_input;
+        if ($number < 0) {
+            echo "Error: Please enter a non-negative integer.\n";
+            return;
+        }
+
+        $persianHex = new PersianHex();
+        $persianHex->set_mode(Digits::ENGLISH);
+
+        $result = $persianHex->calculate($number);
+        echo "Hexadecimal: $result\n";
+
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage() . "\n";
+    }
 }
+
+main();
