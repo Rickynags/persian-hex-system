@@ -1,76 +1,133 @@
+import argparse
 import json
+import subprocess
+import os
 
-class persian_hex:
-    def __init__(self, number: int):
-        self.number = number
-        self.x_equivalent = 'ش'
+JSON_FILE = "persian_hex_output.json"
 
-        self.aliases = {10: 'پ',
-11: 'چ',
-12: 'ژ',
-13: 'ف',
-14: 'گ',
-15: 'ل'}
+EXAMPLES_DIR = "examples"
 
-
-    def show(self, number = None, is_first = True):
-        '''شماره دریافتی را به پایه شانزده نشان بده'''
-        if not number:
-            number = self.number
-        if is_first:
-            print(0)
-            print(self.x_equivalent)
-        for i in divmod(number, 16):
-            if i > 15:
-                return self.show(i, False)
-            elif i in self.aliases:
-                print(self.aliases[i])
-            else:
-                print(i)
-
-    def result(self, number = None, is_first = True):
-        '''شماره دریافتی را به پایه شانزده نشان بده'''
-        if not number:
-            number = self.number
-        buffer = ""
-        if is_first:
-            buffer += "0"
-            buffer += self.x_equivalent
-        for i in divmod(number, 16):
-            if i > 15:
-                buffer += self.result(i, False)
-            elif i in self.aliases:
-                buffer += self.aliases[i]
-            else:
-                buffer += str(i)
-        return buffer
-
-def convert_range_to_persian_hex(start, end):
-    """Convert a range of numbers to Persian hexadecimal."""
-    results = {}
-    for num in range(start, end + 1):
-        persian_hex_instance = persian_hex(num)
-        output = persian_hex_instance.result()
-        results[num] = ''.join(output)
-    return results
+LANGUAGE_EXTENSIONS = {
+    "python": ".py",
+    "c": ".c",
+    "cpp": ".cpp",
+    "php": ".php",
+    "ruby": ".rb",
+    "bash": ".sh",
+}
 
 
-def save_to_json(data, file_path):
-    """Save the dictionary to a JSON file."""
-    with open(file_path, "w", encoding="utf-8") as json_file:
-        json.dump(data, json_file, ensure_ascii=False, indent=2)
-    print(f"Data successfully saved to {file_path}")
+def load_json_data(file_path):
+    """Load JSON data from the specified file."""
+    try:
+        with open(file_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        print(f"Error: JSON file '{file_path}' not found.")
+        exit(1)
+    except json.JSONDecodeError:
+        print(f"Error: Failed to parse JSON file '{file_path}'.")
+        exit(1)
+
+
+def detect_language_scripts(directory):
+    """Detect language scripts in the specified directory."""
+    scripts = {}
+    for file_name in os.listdir(directory):
+        for lang, ext in LANGUAGE_EXTENSIONS.items():
+            if file_name.endswith(ext):
+                scripts[lang] = os.path.join(directory, file_name)
+    return scripts
+
+
+def compile_and_run_c_cpp(script_path, number, lang):
+    """Compile and run C or C++ script."""
+    binary_name = f"persian_hex_{lang}"
+
+    compile_cmd = f"gcc {script_path} -o {binary_name}" if lang == "c" else f"g++ {script_path} -o {binary_name}"
+    compile_result = subprocess.run(compile_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    if compile_result.returncode != 0:
+        print(f"Error compiling {lang} script '{script_path}':\n{compile_result.stderr}")
+        return None
+
+    run_result = subprocess.run([f"./{binary_name}", str(number)], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    if run_result.returncode != 0:
+        print(f"Error running compiled {lang} binary for number {number}:\n{run_result.stderr}")
+        return None
+
+    os.remove(binary_name)
+    return run_result.stdout.strip()
+
+
+def run_language_script(script_path, number, language):
+    """Run a language script with the input number."""
+    if language in ["python", "php", "ruby", "bash"]:
+        try:
+            result = subprocess.run(
+                [language, script_path, str(number)],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True
+            )
+            if result.returncode != 0:
+                print(f"Error running {language} script '{script_path}' for number {number}:\n{result.stderr}")
+                return None
+            return result.stdout.strip()
+        except Exception as e:
+            print(f"Error running {language} script '{script_path}': {e}")
+            return None
+    elif language in ["c", "cpp"]:
+        return compile_and_run_c_cpp(script_path, number, language)
+
+
+def test_language(language, script_path, json_data):
+    """Test a single language against the JSON data."""
+    print(f"Testing language: {language}")
+    for number, expected_output in json_data.items():
+        script_output = run_language_script(script_path, number, language)
+        if script_output != expected_output:
+            print(f"Mismatch for number {number} in {language} script:")
+            print(f"  Expected: {expected_output}")
+            print(f"  Got:      {script_output}")
+            return False
+    print(f"All tests passed for {language}!")
+    return True
+
+
+def test_all_languages(language_scripts, json_data):
+    """Test all detected languages."""
+    for language, script_path in language_scripts.items():
+        if not test_language(language, script_path, json_data):
+            print(f"Tests failed for {language}.")
+            return False
+    print("All tests passed for all languages!")
+    return True
 
 
 def main():
-    """Main function to convert numbers and save to JSON."""
-    start = 0
-    end = 999999
-    output_file = "persian_hex_output.json"
+    """Main function to handle arguments and run tests."""
+    parser = argparse.ArgumentParser(description="Test Persian Hex scripts.")
+    parser.add_argument(
+        "language",
+        nargs="?",
+        help="Specify a language to test (e.g., 'python'). If omitted, all languages are tested."
+    )
+    args = parser.parse_args()
 
-    persian_hex_data = convert_range_to_persian_hex(start, end)
+    json_data = load_json_data(JSON_FILE)
 
-    save_to_json(persian_hex_data, output_file)
+    language_scripts = detect_language_scripts(EXAMPLES_DIR)
+
+    if args.language:
+        language = args.language.lower()
+        if language not in language_scripts:
+            print(f"Error: Language '{language}' not supported or script not found.")
+            print(f"Supported languages: {', '.join(language_scripts.keys())}")
+            exit(1)
+        script_path = language_scripts[language]
+        test_language(language, script_path, json_data)
+    else:
+        test_all_languages(language_scripts, json_data)
 
 
 if __name__ == "__main__":
