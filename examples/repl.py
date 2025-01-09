@@ -6,19 +6,20 @@ parent_dir = Path(__file__).resolve().parent.parent
 libs_dir = os.path.join(parent_dir, "libs")
 sys.path.append(libs_dir)
 
-from persian_hex import PersianHex
-
 def main():
     try:
-        number = int(input("شماره وارد کنید: "))
+        from persian_hex import PersianHex
+
+        number = int(input())
         if number < 0:
-            print("خطا: عدد باید غیر منفی باشد.")
+            print("Error: Please enter a non-negative integer.")
         else:
-            PersianHex(number).show()
+            result = PersianHex(number).show()
+            print(result)
     except ValueError:
-        print("خطا: لطفاً یک عدد صحیح معتبر وارد کنید.")
+        print("Error: Please enter a valid integer.")
     except ImportError as e:
-        print(f"Error importing 'PersianHex': {e}")
+        print(f"Error importing 'PersianHex'")
 
 if __name__ == "__main__":
     main()

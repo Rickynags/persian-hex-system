@@ -3,7 +3,7 @@ import json
 import subprocess
 import os
 
-JSON_FILE = "persian_hex_output.json"
+JSON_FILE = "data.json"
 
 EXAMPLES_DIR = "examples"
 
@@ -63,8 +63,10 @@ def run_language_script(script_path, number, language):
     """Run a language script with the input number."""
     if language in ["python", "php", "ruby", "bash"]:
         try:
+            print(f"Running {language} script: {script_path} with number {number}")
             result = subprocess.run(
-                [language, script_path, str(number)],
+                [language, script_path],
+                input=str(number),
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 text=True
@@ -78,12 +80,16 @@ def run_language_script(script_path, number, language):
             return None
     elif language in ["c", "cpp"]:
         return compile_and_run_c_cpp(script_path, number, language)
+    else:
+        print(f"Error: Unsupported language '{language}'")
+        return None
 
 
 def test_language(language, script_path, json_data):
     """Test a single language against the JSON data."""
     print(f"Testing language: {language}")
     for number, expected_output in json_data.items():
+        print(number)
         script_output = run_language_script(script_path, number, language)
         if script_output != expected_output:
             print(f"Mismatch for number {number} in {language} script:")

@@ -38,14 +38,3 @@ class PersianHex:
 
         persian_hex = f"0{self.x_equivalent}" + self._convert_to_persian_hex(self.number)
         return persian_hex
-
-
-if __name__ == "__main__":
-    try:
-        prompt = 'شماره وارد کنید: '
-        user_input = int(input(prompt))
-
-        persian_hex_converter = PersianHex(user_input)
-        print(persian_hex_converter.show())
-    except ValueError as e:
-        print(f"خطا: لطفاً یک عدد صحیح معتبر وارد کنید. {e}")
