@@ -64,7 +64,6 @@ def run_language_script(script_path, number, language):
     """Run a language script with the input number."""
     if language in ["python", "php", "ruby", "bash"]:
         try:
-            print(f"Running {language} script: {script_path} with number {number}")
             result = subprocess.run(
                 [language, script_path],
                 input=str(number) + "\n",
@@ -74,6 +73,7 @@ def run_language_script(script_path, number, language):
                 encoding="utf-8"
             )
             if result.returncode != 0:
+                print(f"Running {language} script: {script_path} with number {number}")
                 print(f"Error running {language} script '{script_path}' for number {number}:\n{result.stderr}")
                 return None
             return result.stdout.strip()
@@ -91,7 +91,6 @@ def test_language(language, script_path, json_data):
     """Test a single language against the JSON data."""
     print(f"Testing language: {language}")
     for number, expected_output in json_data.items():
-        print(number)
         script_output = run_language_script(script_path, number, language)
         if script_output != expected_output:
             print(f"Mismatch for number {number} in {language} script:")

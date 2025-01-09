@@ -14,7 +14,7 @@ def main():
         if number < 0:
             print("Error: Please enter a non-negative integer.")
         else:
-            result = PersianHex(number).show()
+            result = PersianHex().set_mode().calculate(number)
             print(result)
     except ValueError:
         print("Error: Please enter a valid integer.", number)
