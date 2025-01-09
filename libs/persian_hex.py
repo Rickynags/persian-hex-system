@@ -55,7 +55,8 @@ class PersianHex:
         :param number: Integer number to be converted.
         :return: Persian hexadecimal representation as a string.
         """
-        if not number.isdigit():
+        if isinstance(number, str) and not number.isdigit():
+            # Handle the case where number is not a digit
             for key, value in self.arabic_digits.items():
                 number = number.replace(value, str(key))
             for key, value in self.persian_digits.items():
@@ -63,8 +64,10 @@ class PersianHex:
 
             if not number.isdigit():
                 raise ValueError("Invalid number. Please enter a non-negative integer.")
-        
-        number = int(number)
+
+        if isinstance(number, str):  # If it's a string, convert it to int
+            number = int(number)
+
         self.set_value(number)
         return self.show()
     
@@ -91,15 +94,18 @@ class PersianHex:
         :param number: New integer number to be converted to Persian hexadecimal.
         """
         self.number = number
-        self.check()
+        self._check()
     
-    def check(self):
-        if not self.validate():
+    def _check(self):
+        """
+        Private method to check the validity of the number.
+        """
+        if not self._validate():
             raise ValueError("Number must be non-negative.")
 
-    def validate(self) -> bool:
+    def _validate(self) -> bool:
         """
-        Validate the number.
+        Private method to validate the number.
         :return: True if the number is valid, False otherwise.
         """
         return isinstance(self.number, int) and self.number >= 0
@@ -114,12 +120,15 @@ class PersianHex:
             return ''
 
         quotient, remainder = divmod(number, 16)
-        digit = self.aliases.get(remainder, str(remainder))
-        return self._convert_to_persian_hex(quotient) + self.digit(digit)
+        if remainder > 9:
+            result = self.aliases.get(remainder)
+        else:
+            result = self._digit(remainder)
+        return self._convert_to_persian_hex(quotient) + result
 
-    def digit(self, number: int) -> str:
+    def _digit(self, number: int) -> str:
         """
-        Convert a single digit to Persian.
+        Private method to convert a single digit to Persian.
         :param number: Integer digit to be converted.
         :return: Persian representation of the digit.
         """
@@ -132,5 +141,5 @@ class PersianHex:
         Convert the number to Persian hexadecimal and return the formatted result.
         :return: Persian hexadecimal representation as a string.
         """
-        persian_hex = f"{self.digit(0)}{self.x_equivalent}" + self._convert_to_persian_hex(self.number)
+        persian_hex = f"{self._digit(0)}{self.x_equivalent}" + self._convert_to_persian_hex(self.number)
         return persian_hex

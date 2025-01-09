@@ -9,17 +9,27 @@ sys.path.append(libs_dir)
 def main():
     try:
         from persian_hex import PersianHex
+        from persian_hex import Digits
 
-        number = int(input())
-        if number < 0:
-            print("Error: Please enter a non-negative integer.")
-        else:
-            result = PersianHex().set_mode().calculate(number)
-            print(result)
-    except ValueError:
-        print("Error: Please enter a valid integer.", number)
+        user_input = input("Enter a non-negative integer: ")
+        try:
+            number = int(user_input)
+            if number < 0:
+                print("Error: Please enter a non-negative integer.")
+                return
+        except ValueError:
+            print("Error: Please enter a valid integer.")
+            return
+
+        persian_hex = PersianHex()
+        # persian_hex.set_mode(Digits.ENGLISH)
+        persian_hex.set_mode(Digits.PERSIAN)
+        # persian_hex.set_mode(Digits.ARABIC)
+
+        result = persian_hex.calculate(number)
+        print(f"Persian Hexadecimal: {result}")
     except ImportError as e:
-        print(f"Error importing 'PersianHex'")
+        print(f"Error importing 'PersianHex': {e}")
 
 if __name__ == "__main__":
     main()
