@@ -16,7 +16,9 @@ int main() {
 
     init(&hex);
 
-    set_mode(&hex, PERSIAN);
+    set_mode(&hex, ENGLISH);
+    // set_mode(&hex, PERSIAN);
+    printf("Hexadecimal: ");
     calculate(&hex, number);
 
     return 0;

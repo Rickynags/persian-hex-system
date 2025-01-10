@@ -68,7 +68,7 @@ void show(PersianHex *hex) {
 
     convert_to_persian_hex(hex->number, result, hex);
 
-    printf("Hexadecimal: %s%s%s\n", hex->digits[0], hex->x_equivalent, result);
+    printf("%s%s%s\n", hex->digits[0], hex->x_equivalent, result);
 }
 
 int validate(int number) {
@@ -111,14 +111,6 @@ void set_mode(PersianHex *hex, Digits mode) {
         strcpy(hex->digits[7], "٧");
         strcpy(hex->digits[8], "٨");
         strcpy(hex->digits[9], "٩");
-    }
-
-    for (int i = 0; i < 10; i++) {
-        printf("1-[%d] => %s\n", i, hex->digits[i]);
-    }
-
-    for (int i = 0; i < 6; i++) {
-        printf("2-[%d] => %s\n", i, hex->aliases[i]);
     }
 }
 
