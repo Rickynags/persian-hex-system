@@ -18,6 +18,13 @@ The **Persian Hex System** is a cultural and technical project inspired by Arash
 - [x] Rust
 - [x] Ruby
 - [x] Bash
+- [x] Lua
+- [x] JavaScript
+- [x] TypeScript
+- [x] Java
+- [ ] Perl
+- [ ] Swift
+- [ ] Dart
 
 ## Presentation Screenshots
 
