@@ -5,7 +5,7 @@ import os
 
 JSON_FILE = "data.json"
 
-EXAMPLES_DIR = "src"
+SRC_DIR = "src"
 
 LANGUAGE_EXTENSIONS = {
     "python": ".py",
@@ -125,7 +125,7 @@ def main():
 
     json_data = load_json_data(JSON_FILE)
 
-    language_scripts = detect_language_scripts(EXAMPLES_DIR)
+    language_scripts = detect_language_scripts(SRC_DIR)
 
     if args.language:
         language = args.language.lower()

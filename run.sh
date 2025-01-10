@@ -3,7 +3,7 @@
 LANGUAGES=("c" "cpp" "php" "python" "ruby" "sh")
 
 BUILD_DIR="."
-EXAMPLES_DIR="examples"
+SRC_DIR="src"
 
 run_c() {
   echo "Running C..."
@@ -17,22 +17,22 @@ run_cpp() {
 
 run_php() {
   echo "Running PHP..."
-  php "$EXAMPLES_DIR/repl.php"
+  php "$SRC_DIR/repl.php"
 }
 
 run_python() {
   echo "Running Python..."
-  python3 "$EXAMPLES_DIR/repl.py"
+  python3 "$SRC_DIR/repl.py"
 }
 
 run_ruby() {
   echo "Running Ruby..."
-  ruby "$EXAMPLES_DIR/repl.rb"
+  ruby "$SRC_DIR/repl.rb"
 }
 
 run_sh() {
   echo "Running Shell..."
-  bash "$EXAMPLES_DIR/repl.sh"
+  bash "$SRC_DIR/repl.sh"
 }
 
 if [[ $# -eq 1 ]]; then

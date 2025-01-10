@@ -2,21 +2,21 @@
 
 LANGUAGES=("c" "cpp" "php" "python" "ruby" "sh")
 
-LIBS_DIR="libs"
-EXAMPLES_DIR="examples"
+LIBS_DIR="src/persian_hex"
+SRC_DIR="src"
 BUILD_DIR="."
 
 mkdir -p "$BUILD_DIR"
 
 build_c() {
   echo "Building C..."
-  gcc "$LIBS_DIR/persian_hex.c" "$EXAMPLES_DIR/repl.c" -o "$BUILD_DIR/persian_hex_c"
+  gcc "$LIBS_DIR/persian_hex.c" "$SRC_DIR/repl.c" -o "$BUILD_DIR/persian_hex_c"
   echo "C build completed."
 }
 
 build_cpp() {
   echo "Building C++..."
-  g++ "$LIBS_DIR/persian_hex.cpp" "$EXAMPLES_DIR/repl.cpp" -o "$BUILD_DIR/persian_hex_cpp"
+  g++ "$LIBS_DIR/persian_hex.cpp" "$SRC_DIR/repl.cpp" -o "$BUILD_DIR/persian_hex_cpp"
   echo "C++ build completed."
 }
 
