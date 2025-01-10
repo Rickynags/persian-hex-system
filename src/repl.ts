@@ -1,5 +1,5 @@
-const readline = require('readline');
-const { Digits, PersianHex } = require('./persian_hex/persian_hex');
+import * as readline from 'readline';
+import { Digits, PersianHex } from './persian_hex/persian_hex';
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -7,7 +7,7 @@ const rl = readline.createInterface({
 });
 
 function main() {
-    rl.question('', (user_input) => {
+    rl.question('', (user_input: string) => {
         try {
             const number = parseInt(user_input.trim());
             if (isNaN(number) || number < 0) {

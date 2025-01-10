@@ -103,6 +103,25 @@ php examples/repl.php
 bash examples/repl.sh
 ```
 
+### Running with JavaScript
+
+```bash
+node src/repl.js
+```
+
+### Running with TypeScript
+
+```
+ts-node src/repl.ts
+```
+
+### Running with Java
+
+```
+javac src/repl.java
+java -cp src repl
+```
+
 ### Compiling and Running C Code
 
 ```bash

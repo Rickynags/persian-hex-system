@@ -1,14 +1,21 @@
-class Digits {
+export class Digits {
     static ENGLISH = 0;
     static PERSIAN = 1;
     static ARABIC = 2;
 }
 
-class PersianHex {
+export class PersianHex {
+    private number: number;
+    private mode: number;
+    private x_equivalent = 'ش';
+    private digits: string[] = [];
+    private english_digits: string[] = [];
+    private arabic_digits: string[] = [];
+    private persian_digits: string[] = [];
+    private aliases: { [key: number]: string } = {};
+
     constructor() {
-        this.x_equivalent = 'ش';
-        this.digits = [];
-        this.english_digits = [...Array(10).keys()];
+        this.english_digits = Array.from({ length: 10 }, (_, i) => String(i));
         this.arabic_digits = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
         this.persian_digits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
         this.aliases = {
@@ -17,7 +24,7 @@ class PersianHex {
         this.mode = Digits.ENGLISH;
     }
 
-    calculate(number) {
+    calculate(number: string | number): string {
         if (typeof number === 'string' && !/^\d+$/.test(number)) {
             for (let [key, value] of Object.entries(this.arabic_digits)) {
                 number = number.replace(new RegExp(value, 'g'), key);
@@ -31,12 +38,12 @@ class PersianHex {
             }
         }
 
-        number = parseInt(number, 10);
+        number = parseInt(number as string, 10);
         this.setValue(number);
         return this.show();
     }
 
-    setMode(mode) {
+    setMode(mode: number): void {
         if ([Digits.ENGLISH, Digits.PERSIAN, Digits.ARABIC].includes(mode)) {
             this.mode = mode;
             if (mode === Digits.ENGLISH) {
@@ -51,22 +58,22 @@ class PersianHex {
         }
     }
 
-    setValue(number) {
+    setValue(number: number): void {
         this.number = number;
         this._check();
     }
 
-    _check() {
+    private _check(): void {
         if (!this._validate()) {
             throw new Error('Number must be non-negative.');
         }
     }
 
-    _validate() {
+    private _validate(): boolean {
         return Number.isInteger(this.number) && this.number >= 0;
     }
 
-    _convertToPersianHex(number) {
+    private _convertToPersianHex(number: number): string {
         if (number === 0) return '';
         
         const quotient = Math.floor(number / 16);
@@ -76,14 +83,14 @@ class PersianHex {
         return this._convertToPersianHex(quotient) + result;
     }
 
-    _digit(number) {
+    private _digit(number: number): string {
         if (number < 0 || number > 9) {
             throw new Error('Invalid digit. Please enter a number between 0 and 9.');
         }
         return this.digits[number];
     }
 
-    show() {
+    show(): string {
         let persian_hex = this._digit(0) + this.x_equivalent;
         if (this.number === 0) {
             persian_hex += this._digit(0);
@@ -93,5 +100,3 @@ class PersianHex {
         return persian_hex;
     }
 }
-
-module.exports = { Digits, PersianHex };
