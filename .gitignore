@@ -9,3 +9,7 @@ persian_hex_cpp
 persian_hex_cpp.exe
 persian_hex_go
 persian_hex_go.exe
+
+# Added by cargo
+
+/target
