@@ -63,7 +63,6 @@ void PersianHex::show() {
         std::cout << digits[0] << std::endl;
     } else {
         convert_to_persian_hex(number, result);
-        
         std::cout << result << std::endl;
     }
 }
