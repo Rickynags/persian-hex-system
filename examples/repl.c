@@ -1,14 +1,23 @@
+#include <locale.h>
 #include <stdio.h>
-#include "persian_hex.h"
+#include "../libs/persian_hex.h"
 
 int main() {
+    setlocale(LC_ALL, "en_US.UTF-8");
+
+    PersianHex hex;
+
     int number;
-    printf("شماره وارد کنید: ");
-    scanf("%d", &number);
-    if (number < 0) {
-        printf("خطا: عدد باید غیر منفی باشد.\n");
-    } else {
-        show_persian_hex(number);
+    printf("Enter a non-negative integer: ");
+    if (scanf("%d", &number) != 1 || number < 0) {
+        printf("Error: Please enter a valid integer.\n");
+        return 1;
     }
+
+    init(&hex);
+
+    set_mode(&hex, PERSIAN);
+    calculate(&hex, number);
+
     return 0;
 }
