@@ -36,7 +36,7 @@ def detect_language_scripts(directory):
     scripts = {}
     for file_name in os.listdir(directory):
         for lang, ext in LANGUAGE_EXTENSIONS.items():
-            if file_name.endswith(ext):
+            if file_name.endswith(ext) and file_name.startswith("repl"):
                 scripts[lang] = os.path.join(directory, file_name)
     return scripts
 
