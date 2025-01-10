@@ -1,3 +1,4 @@
+#[derive(Clone)]
 pub enum Digits {
     English,
     Persian,
@@ -26,11 +27,11 @@ impl PersianHex {
 }
 
 pub fn init_persian_hex(hex: &mut PersianHex) {
-    set_mode(hex, Digits::English);
+    set_mode(hex, &Digits::English);
 }
 
-pub fn set_mode(hex: &mut PersianHex, mode: Digits) {
-    hex.mode = mode;
+pub fn set_mode(hex: &mut PersianHex, mode: &Digits) {
+    hex.mode = mode.clone();
     hex.digits.iter_mut().for_each(|digit| *digit = String::new());
 
     match mode {

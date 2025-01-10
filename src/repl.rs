@@ -1,13 +1,16 @@
+// cargo build --release
+// cargo run
 use std::io::{self, Write};
+
 mod persian_hex;
+use crate::persian_hex::persian_hex::{PersianHex, init_persian_hex, set_mode, Digits, calculate};
 
 fn main() {
     let mut number = String::new();
-    let mut hex = persian_hex::PersianHex::new();
+    let mut hex = PersianHex::new();
 
-    persian_hex::init_persian_hex(&mut hex);
+    init_persian_hex(&mut hex);
 
-    print!("Enter a non-negative integer: ");
     io::stdout().flush().unwrap();
 
     io::stdin().read_line(&mut number).unwrap();
@@ -19,8 +22,8 @@ fn main() {
         }
     };
 
-    persian_hex::set_mode(&mut hex, persian_hex::Digits::English);
-    // persian_hex::set_mode(&mut hex, persian_hex::Digits::Persian);
+    set_mode(&mut hex, &Digits::English);
+    // set_mode(&mut hex, &Digits::Persian);
 
-    persian_hex::calculate(&mut hex, number);
+    calculate(&mut hex, number);
 }

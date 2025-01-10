@@ -1,6 +1,11 @@
 [package]
 name = "persian-hex-system"
 version = "0.1.0"
+authors = ["Max Base (Ali) <maxbasecode@gmail.com>"]
 edition = "2021"
 
 [dependencies]
+
+[[bin]]
+name = "persian-hex-system"
+path = "src/repl.rs"
