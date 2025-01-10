@@ -2,7 +2,7 @@
 
 LANGUAGES=("c" "cpp" "php" "python" "ruby" "sh")
 
-BUILD_DIR="build"
+BUILD_DIR="."
 EXAMPLES_DIR="examples"
 
 run_c() {
@@ -17,22 +17,22 @@ run_cpp() {
 
 run_php() {
   echo "Running PHP..."
-  php "$EXAMPLES_DIR/persian_hex.php"
+  php "$EXAMPLES_DIR/repl.php"
 }
 
 run_python() {
   echo "Running Python..."
-  python3 "$EXAMPLES_DIR/persian_hex.py"
+  python3 "$EXAMPLES_DIR/repl.py"
 }
 
 run_ruby() {
   echo "Running Ruby..."
-  ruby "$EXAMPLES_DIR/persian_hex.rb"
+  ruby "$EXAMPLES_DIR/repl.rb"
 }
 
 run_sh() {
   echo "Running Shell..."
-  bash "$EXAMPLES_DIR/persian_hex.sh"
+  bash "$EXAMPLES_DIR/repl.sh"
 }
 
 if [[ $# -eq 1 ]]; then
