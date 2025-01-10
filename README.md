@@ -19,6 +19,12 @@ The **Persian Hex System** is a cultural and technical project inspired by Arash
 
 TODO...
 
+## Presentation screenshots
+
+| ----- | ------- | ------ |
+| First | Second | Third |
+| ![Persian Hex System](images/1.jpg) | ![Persian Hex System](images/2.jpg) | ![Persian Hex System](images/3.jpg) |
+
 ## Installation
 
 1. Clone the repository:
