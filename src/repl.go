@@ -1,22 +1,22 @@
+// go build -o persian_hex_go.exe ./src
 package main
 
 import "fmt"
-import "persian-hex/persianhex"
+import "github.com/basemax/persian-hex-system/src/persian_hex"
 
 func main() {
-	var number int
-	hex := &PersianHex{}
+    var number int
+    hex := &persian_hex.PersianHex{}
 
-	initPersianHex(hex)
+    persian_hex.InitPersianHex(hex)
 
-	fmt.Println("Enter a non-negative integer:")
-	if _, err := fmt.Scanf("%d", &number); err != nil || number < 0 {
-		fmt.Println("Error: Please enter a valid integer.")
-		return
-	}
+    if _, err := fmt.Scanf("%d", &number); err != nil || number < 0 {
+        fmt.Println("Error: Please enter a valid integer.")
+        return
+    }
 
-	setMode(hex, ENGLISH)
-	// setMode(hex, PERSIAN)
+    persian_hex.SetMode(hex, persian_hex.ENGLISH)
+    // persian_hex.SetMode(hex, persian_hex.PERSIAN)
 
-	calculate(hex, number)
+    persian_hex.Calculate(hex, number)
 }

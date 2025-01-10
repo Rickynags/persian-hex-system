@@ -1,4 +1,4 @@
-package main
+package persian_hex
 
 import (
 	"fmt"
@@ -21,15 +21,15 @@ type PersianHex struct {
 	mode        Digits
 }
 
-func initPersianHex(hex *PersianHex) {
+func InitPersianHex(hex *PersianHex) {
 	hex.xEquivalent = "ش"
 	hex.digits = make([]string, 10)
 	hex.aliases = []string{"پ", "چ", "ژ", "ف", "گ", "ل"}
 
-	setMode(hex, ENGLISH)
+	SetMode(hex, ENGLISH)
 }
 
-func setMode(hex *PersianHex, mode Digits) {
+func SetMode(hex *PersianHex, mode Digits) {
 	hex.mode = mode
 
 	for i := range hex.digits {
@@ -48,7 +48,7 @@ func setMode(hex *PersianHex, mode Digits) {
 	}
 }
 
-func convertToPersianHex(number int, result *strings.Builder, hex *PersianHex) {
+func ConvertToPersianHex(number int, result *strings.Builder, hex *PersianHex) {
 	if number == 0 {
 		return
 	}
@@ -56,7 +56,7 @@ func convertToPersianHex(number int, result *strings.Builder, hex *PersianHex) {
 	quotient := number / 16
 	remainder := number % 16
 
-	convertToPersianHex(quotient, result, hex)
+	ConvertToPersianHex(quotient, result, hex)
 
 	if remainder > 9 {
 		result.WriteString(hex.aliases[remainder-10])
@@ -65,7 +65,7 @@ func convertToPersianHex(number int, result *strings.Builder, hex *PersianHex) {
 	}
 }
 
-func show(hex *PersianHex) {
+func Show(hex *PersianHex) {
 	var result strings.Builder
 
 	if hex.number == 0 {
@@ -73,20 +73,20 @@ func show(hex *PersianHex) {
 		return
 	}
 
-	convertToPersianHex(hex.number, &result, hex)
+	ConvertToPersianHex(hex.number, &result, hex)
 	fmt.Printf("%s%s%s\n", hex.digits[0], hex.xEquivalent, result.String())
 }
 
-func validate(number int) bool {
+func Validate(number int) bool {
 	return number >= 0
 }
 
-func calculate(hex *PersianHex, number int) {
-	if !validate(number) {
+func Calculate(hex *PersianHex, number int) {
+	if !Validate(number) {
 		fmt.Println("Error: Please enter a valid non-negative integer.")
 		return
 	}
 
 	hex.number = number
-	show(hex)
+	Show(hex)
 }
