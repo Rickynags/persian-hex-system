@@ -62,6 +62,8 @@ You can compile and execute individual implementations directly. For example:
 
 ```bash
 ./persian_hex_c
+or
+./persian_hex_cpp
 ```
 
 Provide an input number to convert it into the Persian Hex format.
