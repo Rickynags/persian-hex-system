@@ -66,7 +66,7 @@ void reverse_string_utf8(char *str) {
 void show(PersianHex *hex) {
     char result[1000] = "";
 
-    printf("%s%s%s\n", hex->digits[0], hex->x_equivalent);
+    printf("%s%s", hex->digits[0], hex->x_equivalent);
 
     if (hex->number == 0) {
         printf("%s\n", hex->digits[0]);
