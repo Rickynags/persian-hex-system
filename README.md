@@ -10,20 +10,18 @@ The **Persian Hex System** is a cultural and technical project inspired by Arash
 
 ## Languages
 
-[x] C
-[x] C++ (CPP)
-[x] Python
-[x] PHP
-[x] Ruby
-[x] Bash
+- [x] C  
+- [x] C++ (CPP)  
+- [x] Python  
+- [x] PHP  
+- [x] Ruby  
+- [x] Bash  
 
-TODO...
+## Presentation Screenshots
 
-## Presentation screenshots
-
-| ----- | ------- | ------ |
-| First | Second | Third |
-| ![Persian Hex System](images/1.jpg) | ![Persian Hex System](images/2.jpg) | ![Persian Hex System](images/3.jpg) |
+| First                              | Second                              | Third                              |
+|------------------------------------|-------------------------------------|------------------------------------|
+| ![Screenshot 1](images/1.jpg)     | ![Screenshot 2](images/2.jpg)      | ![Screenshot 3](images/3.jpg)     |
 
 ## Installation
 
