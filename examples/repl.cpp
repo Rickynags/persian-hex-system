@@ -1,14 +1,22 @@
 #include <iostream>
-#include "persian_hex.hpp"
+#include <locale>
+#include "../libs/persian_hex.hpp"
 
 int main() {
+    std::setlocale(LC_ALL, "en_US.UTF-8");
+
+    PersianHex hex;
+    hex.init();
+
     int number;
-    std::cout << "شماره وارد کنید: ";
-    std::cin >> number;
-    if (number < 0) {
-        std::cerr << "خطا: عدد باید غیر منفی باشد." << std::endl;
+    std::cout << "Enter a number: ";
+    if (std::cin >> number && number >= 0) {
+        hex.calculate(number);
     } else {
-        show_persian_hex(number);
+        std::cout << "Error: Please enter a valid integer." << std::endl;
     }
+
+    hex.cleanup();
+
     return 0;
 }
