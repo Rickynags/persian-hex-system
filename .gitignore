@@ -1,3 +1,5 @@
 .vscode/
 examples/__pycache__
 libs/__pycache__
+examples/repl_c
+examples/repl_cpp
