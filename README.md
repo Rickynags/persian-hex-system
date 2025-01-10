@@ -99,6 +99,13 @@ gcc examples/repl.c libs/persian_hex.c -o persian_hex_c
 ./persian_hex_c
 ```
 
+### Compiling and Running C++ Code
+
+```bash
+g++ examples/repl.cpp libs/persian_hex.cpp -o persian_hex_cpp
+./persian_hex_cpp
+```
+
 ### Testing JSON Data
 
 Use the `data.json` file for input/output reference.
