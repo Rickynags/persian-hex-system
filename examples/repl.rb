@@ -1,7 +1,6 @@
 require_relative '../libs/persian_hex'
 
 def main
-  puts "Enter a non-negative integer:"
   user_input = gets.chomp
 
   begin
@@ -21,7 +20,7 @@ def main
   # persian_hex.set_mode(Digits::ARABIC)
 
   result = persian_hex.calculate(number)
-  puts "Hexadecimal: #{result}"
+  puts "#{result}"
 end
 
 main

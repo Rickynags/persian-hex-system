@@ -89,7 +89,11 @@ class PersianHex
   end
 
   def show
-    persian_hex = "#{digit(0)}#{@x_equivalent}#{convert_to_persian_hex(@number)}"
+    persian_hex = "#{digit(0)}#{@x_equivalent}"
+    if @number == 0
+      persian_hex += digit(0)
+    else
+      persian_hex += convert_to_persian_hex(@number)
     persian_hex
   end
 end

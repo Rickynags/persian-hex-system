@@ -3,7 +3,6 @@ require_once __DIR__ . "/../libs/persian_hex.php";
 
 function main() {
     try {
-        echo "Enter a non-negative integer: ";
         $user_input = trim(fgets(STDIN));
 
         if (!is_numeric($user_input)) {
@@ -21,7 +20,7 @@ function main() {
         $persianHex->set_mode(Digits::ENGLISH);
 
         $result = $persianHex->calculate($number);
-        echo "Hexadecimal: $result\n";
+        echo "$result\n";
 
     } catch (Exception $e) {
         echo "Error: " . $e->getMessage() . "\n";

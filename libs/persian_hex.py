@@ -141,5 +141,9 @@ class PersianHex:
         Convert the number to Persian hexadecimal and return the formatted result.
         :return: Persian hexadecimal representation as a string.
         """
-        persian_hex = f"{self._digit(0)}{self.x_equivalent}" + self._convert_to_persian_hex(self.number)
+        persian_hex = self._digit(0) + self.x_equivalent
+        if self.number == 0:
+            persian_hex += self._digit(0)
+        else:
+            persian_hex += self._convert_to_persian_hex(self.number)
         return persian_hex

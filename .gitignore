@@ -3,3 +3,5 @@ examples/__pycache__
 libs/__pycache__
 examples/repl_c
 examples/repl_cpp
+persian_hex_c
+persian_hex_cpp

@@ -11,7 +11,7 @@ def main():
         from persian_hex import PersianHex
         from persian_hex import Digits
 
-        user_input = input("Enter a non-negative integer: ")
+        user_input = input("")
         try:
             number = int(user_input)
             if number < 0:
@@ -27,7 +27,7 @@ def main():
         # persian_hex.set_mode(Digits.ARABIC)
 
         result = persian_hex.calculate(number)
-        print(f"Hexadecimal: {result}")
+        print(f"{result}")
     except ImportError as e:
         print(f"Error importing 'PersianHex': {e}")
 

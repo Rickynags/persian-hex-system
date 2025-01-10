@@ -8,7 +8,6 @@ int main() {
     PersianHex hex;
 
     int number;
-    printf("Enter a non-negative integer: ");
     if (scanf("%d", &number) != 1 || number < 0) {
         printf("Error: Please enter a valid integer.\n");
         return 1;
@@ -18,8 +17,9 @@ int main() {
 
     set_mode(&hex, ENGLISH);
     // set_mode(&hex, PERSIAN);
-    printf("Hexadecimal: ");
     calculate(&hex, number);
+
+    cleanup(&hex);
 
     return 0;
 }

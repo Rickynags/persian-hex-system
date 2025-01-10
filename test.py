@@ -45,18 +45,20 @@ def compile_and_run_c_cpp(script_path, number, lang):
     """Compile and run C or C++ script."""
     binary_name = f"persian_hex_{lang}"
 
-    compile_cmd = f"gcc {script_path} -o {binary_name}" if lang == "c" else f"g++ {script_path} -o {binary_name}"
-    compile_result = subprocess.run(compile_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-    if compile_result.returncode != 0:
-        print(f"Error compiling {lang} script '{script_path}':\n{compile_result.stderr}")
-        return None
-
-    run_result = subprocess.run([f"./{binary_name}", str(number)], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    if not os.path.exists(binary_name):
+        print("Compiling C/C++ script...")
+        compile_cmd = f"gcc {script_path} libs/persian_hex{".c" if lang == "c" else ".cpp"} -o {binary_name}" if lang == "c" else f"g++ {script_path} -o {binary_name}"
+        compile_result = subprocess.run(compile_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, encoding="utf-8")
+        if compile_result.returncode != 0:
+            print(f"Error compiling {lang} script '{script_path}':\n{compile_result.stderr}")
+            return None
+    
+    # print("Running compiled C/C++ script with " + str(number) + "...")
+    run_result = subprocess.run([f"./{binary_name}"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, input=str(number) + "\n", encoding="utf-8")
     if run_result.returncode != 0:
         print(f"Error running compiled {lang} binary for number {number}:\n{run_result.stderr}")
         return None
 
-    os.remove(binary_name)
     return run_result.stdout.strip()
 
 

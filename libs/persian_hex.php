@@ -110,7 +110,12 @@ class PersianHex {
     }
 
     public function show() {
-        $persian_hex = $this->_digit(0) . $this->x_equivalent . $this->_convert_to_persian_hex($this->number);
+        $persian_hex = $this->_digit(0) . $this->x_equivalent;
+        if ($this->number == 0) {
+            $persian_hex .= $this->_digit(0);
+        } else {
+            $persian_hex .= $this->_convert_to_persian_hex($this->number);
+        }
         return $persian_hex;
     }
 }

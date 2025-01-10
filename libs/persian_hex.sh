@@ -49,7 +49,13 @@ calculate() {
     fi
 
     local persian_hex
+
     persian_hex=$(convert_to_persian_hex "$number")
 
-    echo -n "$(convert_digit 0)ش$persian_hex"
+    echo -n "$(convert_digit 0)ش"
+    if [ "$number" -ne 0 ]; then
+        echo -n "$persian_hex"
+    else
+        echo -n "$(convert_digit 0)"
+    fi
 }
