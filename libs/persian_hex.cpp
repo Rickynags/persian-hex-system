@@ -1,4 +1,4 @@
-// g++ repl.cpp ../libs/persian_hex.cpp -o repl_cpp && ./repl_cpp
+// g++ repl.cpp ../libs/persian_hex.cpp -o ./../persian_hex_cpp && ./../persian_hex_cpp
 #include "persian_hex.hpp"
 
 PersianHex::PersianHex() {

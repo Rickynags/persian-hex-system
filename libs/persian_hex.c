@@ -1,4 +1,4 @@
-// gcc repl.c ../libs/persian_hex.c -o repl_c && ./repl_c
+// gcc repl.c ../libs/persian_hex.c -o ./../persian_hex_c && ./../persian_hex_c
 #include "persian_hex.h"
 
 void init(PersianHex *hex) {
