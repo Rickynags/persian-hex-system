@@ -10,20 +10,18 @@ The **Persian Hex System** is a cultural and technical project inspired by Arash
 
 ## Languages
 
-[x] C
-[x] C++ (CPP)
-[x] Python
-[x] PHP
-[x] Ruby
-[x] Bash
+- [x] C  
+- [x] C++ (CPP)  
+- [x] Python  
+- [x] PHP  
+- [x] Ruby  
+- [x] Bash  
 
-TODO...
+## Presentation Screenshots
 
-## Presentation screenshots
-
-| ----- | ------- | ------ |
-| First | Second | Third |
-| ![Persian Hex System](images/1.jpg) | ![Persian Hex System](images/2.jpg) | ![Persian Hex System](images/3.jpg) |
+| First                              | Second                              | Third                              |
+|------------------------------------|-------------------------------------|------------------------------------|
+| ![Screenshot 1](images/1.jpg)     | ![Screenshot 2](images/2.jpg)      | ![Screenshot 3](images/3.jpg)     |
 
 ## Installation
 
@@ -64,6 +62,8 @@ You can compile and execute individual implementations directly. For example:
 
 ```bash
 ./persian_hex_c
+or
+./persian_hex_cpp
 ```
 
 Provide an input number to convert it into the Persian Hex format.
@@ -99,6 +99,13 @@ bash examples/repl.sh
 ```bash
 gcc examples/repl.c libs/persian_hex.c -o persian_hex_c
 ./persian_hex_c
+```
+
+### Compiling and Running C++ Code
+
+```bash
+g++ examples/repl.cpp libs/persian_hex.cpp -o persian_hex_cpp
+./persian_hex_cpp
 ```
 
 ### Testing JSON Data
