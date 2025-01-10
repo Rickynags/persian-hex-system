@@ -1,4 +1,4 @@
-// gcc repl.c ../libs/persian_hex.c -o ./../persian_hex_c && ./../persian_hex_c
+// gcc src/repl.c src/persian_hex/persian_hex.c -o persian_hex_c && ./persian_hex_c
 #include "persian_hex.h"
 
 void init(PersianHex *hex) {
@@ -39,27 +39,6 @@ void convert_to_persian_hex(int number, char *result, PersianHex *hex) {
         strcat(result, hex->aliases[remainder - 10]);
     } else {
         strcat(result, hex->digits[remainder]);
-    }
-}
-
-void reverse_string_utf8(char *str) {
-    int length = strlen(str);
-    int i = 0, j = length - 1;
-    
-    while (i < j) {
-        while ((str[i] & 0xC0) == 0x80) {
-            i++;
-        }
-        while ((str[j] & 0xC0) == 0x80) {
-            j--;
-        }
-
-        char temp = str[i];
-        str[i] = str[j];
-        str[j] = temp;
-
-        i++;
-        j--;
     }
 }
 

@@ -5,7 +5,7 @@ import os
 
 JSON_FILE = "data.json"
 
-EXAMPLES_DIR = "examples"
+EXAMPLES_DIR = "src"
 
 LANGUAGE_EXTENSIONS = {
     "python": ".py",
@@ -47,7 +47,7 @@ def compile_and_run_c_cpp(script_path, number, lang):
 
     if not os.path.exists(binary_name):
         print("Compiling C/C++ script...")
-        compile_cmd = f"gcc {script_path} libs/persian_hex.c -o {binary_name}" if lang == "c" else f"g++ {script_path} libs/persian_hex.cpp -o {binary_name}"
+        compile_cmd = f"gcc {script_path} src/persian_hex/persian_hex.c -o {binary_name}" if lang == "c" else f"g++ {script_path} src/persian_hex/persian_hex.cpp -o {binary_name}"
         compile_result = subprocess.run(compile_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, encoding="utf-8")
         if compile_result.returncode != 0:
             print(f"Error compiling {lang} script '{script_path}':\n{compile_result.stderr}")

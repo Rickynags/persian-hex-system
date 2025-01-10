@@ -1,4 +1,4 @@
-// g++ repl.cpp ../libs/persian_hex.cpp -o ./../persian_hex_cpp && ./../persian_hex_cpp
+// g++ src/repl.cpp src/persian_hex/persian_hex.cpp -o ./persian_hex_cpp && ./persian_hex_cpp
 #include "persian_hex.hpp"
 
 PersianHex::PersianHex() {
@@ -34,24 +34,6 @@ void PersianHex::convert_to_persian_hex(int number, std::string &result) {
         result += aliases[remainder - 10];
     } else {
         result += digits[remainder];
-    }
-}
-
-void PersianHex::reverse_string_utf8(std::string &str) {
-    int i = 0, j = str.length() - 1;
-
-    while (i < j) {
-        while ((str[i] & 0xC0) == 0x80) {
-            i++;
-        }
-        while ((str[j] & 0xC0) == 0x80) {
-            j--;
-        }
-
-        std::swap(str[i], str[j]);
-
-        i++;
-        j--;
     }
 }
 

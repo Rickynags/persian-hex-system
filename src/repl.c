@@ -1,6 +1,6 @@
 #include <locale.h>
 #include <stdio.h>
-#include "../libs/persian_hex.h"
+#include "persian_hex/persian_hex.h"
 
 int main() {
     setlocale(LC_ALL, "en_US.UTF-8");

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ../libs/persian_hex.sh
+source persian_hex/persian_hex.sh
 
 read user_input
 

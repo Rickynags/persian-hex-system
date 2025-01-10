@@ -1,6 +1,6 @@
 #include <iostream>
 #include <locale>
-#include "../libs/persian_hex.hpp"
+#include "persian_hex/persian_hex.hpp"
 
 int main() {
     std::setlocale(LC_ALL, "en_US.UTF-8");

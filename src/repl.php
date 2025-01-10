@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . "/../libs/persian_hex.php";
+require_once __DIR__ . "/persian_hex/persian_hex.php";
 
 function main() {
     try {

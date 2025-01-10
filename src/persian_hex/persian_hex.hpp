@@ -22,7 +22,6 @@ public:
     PersianHex();
     void init();
     void convert_to_persian_hex(int number, std::string &result);
-    void reverse_string_utf8(std::string &str);
     void show();
     bool validate(int number);
     void set_mode(Digits mode);

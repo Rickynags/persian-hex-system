@@ -23,7 +23,6 @@ void init(PersianHex *hex);
 void convert_to_persian_hex(int number, char *result, PersianHex *hex);
 void show(PersianHex *hex);
 int validate(int number);
-void reverse_string_utf8(char *str);
 void set_mode(PersianHex *hex, Digits mode);
 void calculate(PersianHex *hex, int number);
 void cleanup(PersianHex *hex);

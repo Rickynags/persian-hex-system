@@ -1,4 +1,4 @@
-require_relative '../libs/persian_hex'
+require_relative 'persian_hex/persian_hex'
 
 def main
   user_input = gets.chomp
