@@ -1,7 +1,7 @@
 .vscode/
-examples/__pycache__
-libs/__pycache__
-examples/repl_c
-examples/repl_cpp
+
+src/__pycache__
+src/persian_hex/__pycache__
+
 persian_hex_c
 persian_hex_cpp
