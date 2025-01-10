@@ -9,7 +9,6 @@ int main() {
     hex.init();
 
     int number;
-    std::cout << "Enter a number: ";
     if (std::cin >> number && number >= 0) {
         hex.calculate(number);
     } else {

@@ -57,10 +57,15 @@ void PersianHex::reverse_string_utf8(std::string &str) {
 
 void PersianHex::show() {
     std::string result = "";
+    std::cout << digits[0] + x_equivalent;
 
-    convert_to_persian_hex(number, result);
-
-    std::cout << digits[0] + x_equivalent + result << std::endl;
+    if (number == 0) {
+        std::cout << digits[0] << std::endl;
+    } else {
+        convert_to_persian_hex(number, result);
+        
+        std::cout << result << std::endl;
+    }
 }
 
 bool PersianHex::validate(int number) {
