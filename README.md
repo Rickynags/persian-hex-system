@@ -10,12 +10,14 @@ The **Persian Hex System** is a cultural and technical project inspired by Arash
 
 ## Languages
 
-- [x] C  
-- [x] C++ (CPP)  
-- [x] Python  
-- [x] PHP  
-- [x] Ruby  
-- [x] Bash  
+- [x] C
+- [x] C++ (CPP)
+- [x] Python
+- [x] PHP
+- [x] Go
+- [x] Rust
+- [x] Ruby
+- [x] Bash
 
 ## Presentation Screenshots
 
