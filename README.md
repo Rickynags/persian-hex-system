@@ -1,157 +1,47 @@
-# Persian Hex System
+# Persian Hex System 🇮🇷
 
-The **Persian Hex System** is a cultural and technical project inspired by Arash Mohammadi. Its goal is to create a uniquely Persian system to replace the traditional hexadecimal (hex) numbering system, designed specifically to reflect Iranian culture and Persian language. This project provides tools and scripts in multiple programming languages to work with the Persian Hex system.
+Welcome to the **Persian Hex System** GitHub repository! 
 
-## Features
+![Persian Flag](https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Flag_of_Iran.svg/1920px-Flag_of_Iran.svg.png)
 
-- Multilingual support with implementations in **C**, **C++**, **Python**, **PHP**, **Ruby**, and **Bash**.
-- Ability to compile and run examples for Persian Hex conversion in a variety of environments.
-- JSON-based input/output testing to validate implementation correctness.
+## Overview
 
-## Languages
+The **Persian Hex System** is a unique cultural and technical project inspired by Arash Mohammadi. Our goal is to create a Persian alternative to the traditional hexadecimal (hex) numbering system, tailored specifically to reflect Iranian culture and the Persian language.
 
-- [x] C
-- [x] C++ (CPP)
-- [x] Python
-- [x] PHP
-- [x] Go
-- [x] Rust
-- [x] Ruby
-- [x] Bash
-- [x] Lua
-- [x] JavaScript
-- [x] TypeScript
-- [x] Java
-- [ ] Perl
-- [ ] Swift
-- [ ] Dart
+## Repository Details
 
-## Presentation Screenshots
+- **Repository Name:** [persian-hex-system](https://github.com/YOUR_USERNAME/persian-hex-system)
+- **Short Description:** The Persian Hex System is a project that provides tools and scripts in multiple programming languages to replace the traditional hex system with a uniquely Persian one.
+- **Topics:** bash, bin, binary, c, computer, cpp, hex, hex-system, persian, php, py, python, ruby, shell
 
-| First                              | Second                              | Third                              |
-|------------------------------------|-------------------------------------|------------------------------------|
-| ![Screenshot 1](images/1.jpg)     | ![Screenshot 2](images/2.jpg)      | ![Screenshot 3](images/3.jpg)     |
+## Project Goal
 
-## Installation
+Our mission is to offer a novel approach to hexadecimal numbering that resonates with the rich heritage and linguistic nuances of Iran. By introducing a Persian Hex System, we aim to contribute to the preservation and promotion of Iranian culture within the realm of computer science and programming.
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/BaseMax/persian-hex-system.git
-   cd persian-hex-system
-   ```
+## Getting Started
 
-2. Install the required dependencies for your environment. Ensure you have compilers (e.g., GCC, G++) and interpreters for the supported languages installed.
+To explore the Persian Hex System and its components, visit our [official website](https://example.com). Launch the website to access detailed information, resources, and updates about the project.
 
-## Usage
+## Tools and Scripts
 
-### Testing All Languages
+Our repository includes tools and scripts in various programming languages to facilitate the implementation of the Persian Hex System. Whether you prefer Bash, C, C++, Python, Ruby, or PHP, we've got you covered with a range of resources to support your exploration of this innovative numerical system.
 
-Run the test script to validate all implementations:
+## Contributions
 
-```bash
-python3 test.py
-```
+We welcome contributions from individuals passionate about Persian culture, programming, and numerical systems. Feel free to dive into our repository, explore the codebase, and contribute to the development and enhancement of the Persian Hex System. Your input could play a vital role in shaping the future of this project and promoting cultural diversity in the world of technology.
 
-### Testing a Specific Language
-Specify a language to test its implementation:
+## Connect With Us
 
-```bash
-python3 test.py <language>
-```
+Stay connected with the Persian Hex System community by following us on social media platforms such as Twitter, Facebook, and Instagram. Join the conversation, share your insights, and engage with like-minded individuals who are enthusiastic about blending culture and technology in a meaningful way.
 
-For example:
+---
 
-```bash
-python3 test.py php
-```
+[![](https://img.shields.io/badge/Visit-Website-blue?style=for-the-badge&logo=appveyor)](https://example.com)
 
-### Example Outputs
+---
 
-You can compile and execute individual implementations directly. For example:
+Unlock the potential of the Persian Hex System and embark on a journey that merges tradition with innovation. Join us in reshaping the landscape of numerical systems and embracing the beauty of Persian culture within the realm of technology. Let's code a brighter future together! 🌟🔢🌺
 
-```bash
-./persian_hex_c
-or
-./persian_hex_cpp
-```
+---
 
-Provide an input number to convert it into the Persian Hex format.
-
-## Examples
-
-### Running with Python
-
-```bash
-python3 examples/repl.py
-```
-
-### Running with Ruby
-
-```bash
-ruby examples/repl.rb
-```
-
-### Running with PHP
-
-```bash
-php examples/repl.php
-```
-
-### Running with Bash
-
-```bash
-bash examples/repl.sh
-```
-
-### Running with JavaScript
-
-```bash
-node src/repl.js
-```
-
-### Running with TypeScript
-
-```
-ts-node src/repl.ts
-```
-
-### Running with Java
-
-```
-javac src/repl.java
-java -cp src repl
-```
-
-### Compiling and Running C Code
-
-```bash
-gcc examples/repl.c libs/persian_hex.c -o persian_hex_c
-./persian_hex_c
-```
-
-### Compiling and Running C++ Code
-
-```bash
-g++ examples/repl.cpp libs/persian_hex.cpp -o persian_hex_cpp
-./persian_hex_cpp
-```
-
-### Testing JSON Data
-
-Use the `data.json` file for input/output reference.
-
-### Development
-
-- Add your script to the `examples` directory with the appropriate file extension.
-- Update `LANGUAGE_EXTENSIONS` in `test.py` if adding support for a new language.
-- Follow the JSON format in `data.json` for input-output validation.
-
-## Contributing
-
-Contributions are welcome! Feel free to open issues or submit pull requests to improve the project.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-Copyright 2025 Max Base
+Thank you for exploring the **Persian Hex System** repository. We appreciate your interest and look forward to your involvement in this exciting initiative. Happy coding! 🎉👩‍💻🇮🇷
